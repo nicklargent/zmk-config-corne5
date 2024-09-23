@@ -42,6 +42,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        nav_shift {
+            bindings = <&mo 2>;
+            key-positions = <37 38>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -67,26 +76,26 @@
             label = "SYM";
         };
 
-        nav {
-            bindings = <
-&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5     &trans    &kp LC(X)  &kp LC(C)  &kp LC(V)  &none      &trans
-&none   &kp F6   &kp F7   &kp F8  &kp F9  &kp F10    &kp LEFT  &kp UP     &kp DOWN   &kp RIGHT  &trans     &trans
-&trans  &kp F11  &kp F12  &trans  &trans  &trans     &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &kp LC(Z)  &trans
-                          &to 0   &trans  &trans     &trans    &trans     &trans
-            >;
-
-            label = "NAV";
-        };
-
         num {
             bindings = <
-&none  &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &none
-&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&none  &bt BT_CLR    &trans        &trans        &trans        &trans          &trans    &trans    &trans  &trans     &trans  &trans
-                                   &to 0         &trans        &trans          &trans    &trans    &trans
+&none  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7     &kp N8     &kp N9     &kp N0  &none
+&none  &none   &none   &none   &none   &none     &kp LEFT  &kp UP     &kp DOWN   &kp RIGHT  &none   &none
+&none  &none   &none   &trans  &trans  &trans    &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &none   &none
+                       &to 0   &trans  &trans    &trans    &trans     &trans
             >;
 
-            label = "NUM";
+            label = "num";
+        };
+
+        fn {
+            bindings = <
+&none  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6  &kp F7  &kp F8  &kp F9   &kp F10  &none
+&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none   &none   &none   &kp F11  &kp F12  &trans
+&none  &bt BT_CLR    &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans   &trans   &trans
+                                   &to 0         &trans        &trans          &trans  &trans  &trans
+            >;
+
+            label = "FN";
         };
     };
 };
