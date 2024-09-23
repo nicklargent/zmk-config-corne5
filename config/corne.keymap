@@ -26,6 +26,7 @@
             tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <6 7 8 9 10 11>;    // <---[[right-hand keys]]
         };
 
@@ -36,20 +37,23 @@
             tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <0 1 2 3 4 5>;    // <---[[right-hand keys]]
         };
     };
-        
+
     keymap {
         compatible = "zmk,keymap";
 
         dvorak {
             bindings = <
-&none  &kp SINGLE_QUOTE  &kp COMMA       &kp PERIOD   &kp P             &kp Y        &kp F      &kp G              &kp C        &kp R            &kp L            &none
-&none  &lh_pht LEFT_GUI A    &lh_pht LEFT_ALT O  &lh_pht LCTRL E  &lh_pht LEFT_SHIFT U  &kp I        &kp D      &rh_pht RIGHT_SHIFT H  &rh_pht RCTRL T  &rh_pht RIGHT_ALT N  &rh_pht RIGHT_GUI S  &none
-&none  &kp SEMICOLON     &kp Q           &kp J        &kp K             &kp X        &kp B      &kp M              &kp W        &kp V            &kp Z            &none
-                                         &kp DELETE   &lt 1 BACKSPACE   &kp ENTER    &kp SPACE  &kp TAB            &kp ESCAPE
+&none  &kp SINGLE_QUOTE  &kp COMMA  &kp PERIOD  &kp P            &kp Y        &kp F      &kp G    &kp C       &kp R  &kp L  &none
+&none  &kp A             &kp O      &kp E       &kp U            &kp I        &kp D      &kp H    &kp T       &kp N  &kp S  &none
+&none  &kp SEMICOLON     &kp Q      &kp J       &kp K            &kp X        &kp B      &kp M    &kp W       &kp V  &kp Z  &none
+                                    &kp DELETE  &lt 1 BACKSPACE  &kp ENTER    &kp SPACE  &kp TAB  &kp ESCAPE
             >;
+
+            label = "DV";
         };
 
         nav {
@@ -59,6 +63,8 @@
 &trans  &trans        &trans    &trans     &trans     &trans    &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &none      &trans
                                 &trans     &trans     &trans    &trans    &trans     &trans
             >;
+
+            label = "NAV";
         };
 
         lower_layer {
