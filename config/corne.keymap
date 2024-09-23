@@ -9,57 +9,17 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        lh_pht: left_positional_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
-            tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <200>;
-            bindings = <&kp>, <&kp>;
-
-            hold-trigger-key-positions = <6 7 8 9 10 11>;    // <---[[right-hand keys]]
-        };
-
-        rh_pht: right_positional_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
-            tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <200>;
-            bindings = <&kp>, <&kp>;
-
-            hold-trigger-key-positions = <0 1 2 3 4 5>;    // <---[[right-hand keys]]
-        };
-    };
-
-    combos {
-        compatible = "zmk,combos";
-
-        nav_shift {
-            bindings = <&mo 2>;
-            key-positions = <37 38>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
 
         dvorak {
             bindings = <
-&none  &kp SINGLE_QUOTE  &kp COMMA  &kp PERIOD        &kp P            &kp Y        &kp F      &kp G          &kp C                 &kp R  &kp L  &none
-&none  &kp A             &kp O      &kp E             &kp U            &kp I        &kp D      &kp H          &kp T                 &kp N  &kp S  &none
-&none  &kp SEMICOLON     &kp Q      &kp J             &kp K            &kp X        &kp B      &kp M          &kp W                 &kp V  &kp Z  &none
-                                    &mt LCTRL ESCAPE  &mt LSHFT ENTER  &lt 1 TAB    &kp SPACE  &kp RIGHT_GUI  &mt RIGHT_ALT DELETE
+&none  &kp SINGLE_QUOTE  &kp COMMA  &kp PERIOD  &kp P  &kp Y        &kp F      &kp G  &kp C  &kp R  &kp L  &none
+&none  &kp A             &kp O      &kp E       &kp U  &kp I        &kp D      &kp H  &kp T  &kp N  &kp S  &none
+&none  &kp SEMICOLON     &kp Q      &kp J       &kp K  &kp X        &kp B      &kp M  &kp W  &kp V  &kp Z  &none
+                                    &mo 2       &mo 1  &kp LSHFT    &kp SPACE  &mo 2  &mo 3
             >;
 
             label = "DV";
@@ -70,32 +30,31 @@
 &none  &kp EXCL   &kp AT  &kp HASH  &kp DLLR      &kp PRCNT    &kp CARET      &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &none
 &none  &kp GRAVE  &trans  &trans    &kp SLASH     &none        &kp MINUS      &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &none
 &none  &kp TILDE  &trans  &trans    &kp QUESTION  &none        &kp UNDER      &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &none
-                          &trans    &trans        &trans       &kp BACKSPACE  &to 2      &sl 3
+                          &trans    &trans        &trans       &kp BACKSPACE  &kp ENTER  &trans
             >;
 
             label = "SYM";
         };
 
-        num {
+        nav {
+            label = "NAV";
             bindings = <
-&none  &kp N1     &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7     &kp N8     &kp N9     &kp N0      &none
-&none  &none      &none   &none   &none   &none     &kp LEFT  &kp UP     &kp DOWN   &kp RIGHT  &none       &none
-&none  &kp LCTRL  &none   &trans  &trans  &trans    &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &kp DELETE  &none
-                          &to 0   &trans  &trans    &trans    &trans     &trans
+&none  &kp ESCAPE  &none     &none     &none   &none     &kp BACKSPACE  &kp HOME   &kp UP_ARROW  &kp END    &kp DELETE  &none
+&none  &kp TAB     &none     &none     &none   &none     &none          &kp LEFT   &kp DOWN      &kp RIGHT  &kp RGUI    &none
+&none  &kp LCTRL   &kp LALT  &kp LGUI  &trans  &trans    &none          &kp PG_UP  &kp PG_DN     &kp RALT   &kp RCTRL   &none
+                             &trans    &trans  &trans    &trans         &trans     &trans
             >;
-
-            label = "num";
         };
 
-        fn {
+        num {
             bindings = <
-&none  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6  &kp F7  &kp F8  &kp F9   &kp F10  &none
-&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none   &none   &none   &kp F11  &kp F12  &trans
-&none  &bt BT_CLR    &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans   &trans   &trans
-                                   &to 0         &trans        &trans          &trans  &trans  &trans
+&none  &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6      &kp N7     &kp N8     &kp N9   &kp N0   &none
+&none  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6      &kp F7     &kp F8     &kp F9   &kp F10  &none
+&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_CLR  &kp PG_UP  &kp PG_DN  &kp F11  &kp F12  &none
+                                   &trans        &trans        &trans          &trans      &trans     &trans
             >;
 
-            label = "FN";
+            label = "NUM";
         };
     };
 };
