@@ -9,7 +9,19 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        left_fn_combo {
+            bindings = <&mo 4>;
+            key-positions = <36 37>;
+        };
+
+        right_fn_combo {
+            bindings = <&mo 4>;
+            key-positions = <41 40>;
+        };
+    };
 
     behaviors {
         morph_sp_bs: morph_sp_bs {
@@ -79,7 +91,7 @@
             bindings = <
 &none  &none  &kp N7  &kp N8  &kp N9   &kp BSPC     &none   &none     &none     &none      &none    &none
 &none  &none  &kp N4  &kp N5  &kp N6   &none        &none   &kp RGUI  &kp RALT  &kp RCTRL  &kp TAB  &none
-&none  &none  &kp N1  &kp N2  &kp N3   &none        &none   &none     &none     &none      &mo 4    &none
+&none  &none  &kp N1  &kp N2  &kp N3   &none        &none   &none     &none     &none      &none    &none
                       &kp N0  &kp DOT  &kp ENTER    &trans  &trans    &trans
             >;
 
