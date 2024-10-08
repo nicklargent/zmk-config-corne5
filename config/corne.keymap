@@ -13,7 +13,7 @@
         compatible = "zmk,combos";
 
         left_fn_combo {
-            bindings = <&mo 4>;
+            bindings = <&kp LEFT_GUI>;
             key-positions = <36 37>;
         };
 
@@ -57,10 +57,10 @@
 
         dvorak {
             bindings = <
-&none  &kp SINGLE_QUOTE  &kp COMMA  &kp PERIOD      &kp P      &kp Y    &kp F         &kp G           &kp C         &kp R  &kp L  &none
-&none  &kp A             &kp O      &kp E           &kp U      &kp I    &kp D         &kp H           &kp T         &kp N  &kp S  &none
-&none  &kp SEMICOLON     &kp Q      &kp J           &kp K      &kp X    &kp B         &kp M           &kp W         &kp V  &kp Z  &none
-                                    &morph_2_enter  &kp LSHFT  &mo 1    &morph_sp_bs  &morph_2_enter  &morph_3_tab
+&none  &kp SINGLE_QUOTE  &kp COMMA  &kp PERIOD  &kp P      &kp Y    &kp F         &kp G           &kp C         &kp R  &kp L  &none
+&none  &kp A             &kp O      &kp E       &kp U      &kp I    &kp D         &kp H           &kp T         &kp N  &kp S  &none
+&none  &kp SEMICOLON     &kp Q      &kp J       &kp K      &kp X    &kp B         &kp M           &kp W         &kp V  &kp Z  &none
+                                    &kp LCTRL   &kp LSHFT  &mo 1    &morph_sp_bs  &morph_2_enter  &morph_3_tab
             >;
 
             label = "DV";
